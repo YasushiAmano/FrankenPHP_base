@@ -4,11 +4,12 @@ services:
         entrypoint: php artisan octane:frankenphp --max-requests=1
         ports:
             - "3000:3000"
-            - "8000:8000"
+            - "80:8000"
         volumes:
             - ./src:/app
             - ./docker/caddy/data:/data
             - ./docker/caddy/config:/config
+            - ./docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini
     mariadb:
         build: ./docker/mysql
         ports:
@@ -31,4 +32,6 @@ services:
             PMA_HOST: mariadb
             PMA_PORT: 3306
         volumes:
+            - ./docker/phpmyadmin/php.ini:/usr/local/etc/php/conf.d/php.ini
+            - ./docker/phpmyadmin/phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
             - /sessions

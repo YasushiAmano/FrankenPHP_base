@@ -23,5 +23,3 @@ RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # .bashrcの設定を追加
 COPY bashrc /root/.bashrc
-
-ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
