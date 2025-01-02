@@ -27,6 +27,8 @@ php artisan lang:add ja
 
 ## 初期設定
 
+.envは、.env.base_sampleをコピーして作成してください。
+
 ### アプリケーションキーの生成
 
 .envのAPP_KEYを生成します。
