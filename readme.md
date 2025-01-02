@@ -4,34 +4,23 @@
 
 dunglas/frankenphp:1
 
-## パッケージ
-
-下記のようにしてOctaneをインストールしています。
-
-また、日本語化も行っています。
-
-
-```sh
-composer require laravel/octane
-php artisan octane:install
-php artisan octane:start
-```
-
-## 日本語化パッケージ
-
-```sh
-composer require laravel-lang/lang
-composer require laravel-lang/publisher
-php artisan lang:add ja
-```
-
 ## 初期設定
 
-.envは、.env.base_sampleをコピーして作成してください。
+Laravelはsrcディレクトリに配置しています。
+
+srcの中で.env.base_sampleコピーして.envを作成してください。
+
+## Dockerを起動
+
+```sh
+docker compose up -d
+```
 
 ### アプリケーションキーの生成
 
 .envのAPP_KEYを生成します。
+
+以下のコマンドは、コンテナー内で実行してください。
 
 ```sh
 php artisan key:generate
@@ -42,6 +31,7 @@ php artisan key:generate
 ```sh
 php artisan migrate
 ```
+
 
 #### セッションテーブルの作成（.envでSESSION_DRIVER=databaseを使用している場合）
 
@@ -55,10 +45,21 @@ php artisan migrate
 ```sh
 # PHPDoc生成
 php artisan ide-helper:generate
-
 # モデルのPHPDoc生成
 php artisan ide-helper:models -N
-
 # DBのPHPDoc生成
 php artisan ide-helper:meta
+```
+
+### Jetstream（高機能な認証）
+
+Jetstreamは、 ログイン、新規登録、メール検証、２段階認証、セッション管理、APIサポート(Laravel Sanctum)、チーム管理などをサポートしています。
+
+Laravelの初期画面の右上にLoginとRegisterのリンクがあります。
+Registerから管理者を作成してください。
+
+Jetstreamの初期化は、コンテナー内で実行してください。
+
+```sh
+php artisan jetstream:install livewire
 ```
