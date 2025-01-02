@@ -47,3 +47,16 @@ php artisan migrate
 php artisan session:table
 php artisan migrate
 ```
+
+## IDE Helper（開発環境のみ）
+
+```sh
+# PHPDoc生成
+php artisan ide-helper:generate
+
+# モデルのPHPDoc生成
+php artisan ide-helper:models -N
+
+# DBのPHPDoc生成
+php artisan ide-helper:meta
+```
