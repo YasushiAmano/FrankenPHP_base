@@ -25,6 +25,14 @@ docker compose up -d
 ```sh
 php artisan key:generate
 ```
+## 日本語化パッケージのインストール
+
+```sh
+composer require laravel-lang/lang
+composer require laravel-lang/publisher
+php artisan lang:publish
+php artisan lang:add ja
+```
 
 ### マイグレーションの実行
 
