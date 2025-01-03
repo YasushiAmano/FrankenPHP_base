@@ -61,5 +61,56 @@ Registerから管理者を作成してください。
 Jetstreamの初期化は、コンテナー内で実行してください。
 
 ```sh
+composer require laravel/jetstream
 php artisan jetstream:install livewire
+```
+
+## アセットのビルド
+
+### npmパッケージのインストール
+
+```sh
+npm install
+```
+
+### 開発時のアセットビルド
+
+```sh
+npm run dev
+```
+
+Viteの開発サーバーが正常に起動すると、ターミナルで待ち受け状態になります。
+
+vite.config.jsのVITE_DEV_SERVER_URLを.envに設定。
+
+```sh
+VITE_DEV_SERVER_URL=http://localhost:5173
+```
+
+また、vite.config.jsのserver.hmr.hostをlocalhostに設定してください。
+
+```js
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: [
+                'resources/css/app.css',
+                'resources/js/app.js',
+            ],
+            refresh: true,
+        }),
+    ],
+    server: {
+        host: '0.0.0.0',
+        hmr: {
+            host: 'localhost'
+        },
+    },
+});
+```
+
+### 本番用ビルド
+
+```sh
+npm run build
 ```
